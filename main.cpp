@@ -1,14 +1,26 @@
 #include "raylib.h"
 #include "Animation.h"
+
+#include "GameDesign.h"
+#include "Question.h"
 #include <iostream>
 using namespace std;
 
-typedef enum GAMESCREEN {Logo = 0, Title, Menu, Gameplay,Game_language, Ending} GAMESCREEN;
+typedef enum GAMESCREEN {Logo = 0, Title, Menu, Gameplay,Game_language, slashcode, Ending} GAMESCREEN;
+
+
 int main()
 {
     // Initialization
     const int screenWidth = 1440;
     const int screenHeight = 1024;
+
+    string userInput = "";
+    SettingsButton settingsButton;
+    Question questionInstance;
+    
+    
+
 
 
     InitWindow(screenWidth, screenHeight, "Project: Slash Code (ALPHA)");
@@ -19,7 +31,7 @@ int main()
     AnimatedSprite mySprite("resources/bg/Main.png", 1440, 1024, 15, 0.2f);
 
     SetTargetFPS(60);
-
+    
 
     // Main game loop
     while (!WindowShouldClose())
@@ -55,35 +67,53 @@ int main()
             {
                 // TODO: Update GAMEPLAY screen variables here!
 
-
                 // Press enter to change to ENDING screen
-                Rectangle collision_position = { 344, 293, 764, 219 };
-                
-                if (CheckCollisionPointRec(GetMousePosition(), collision_position)) {
-                    
 
-                    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-                        
-                        currentScreen = Game_language;
-                    }
-                } 
+            Rectangle collision_position = { 344, 293, 764, 219 };
+                
+             if (CheckCollisionPointRec(GetMousePosition(), collision_position)) {
+                 // isSettingOpen1 prevent the Beginner button to be press pag nasa setting mode
+                if (settingsButton.isSettingsOpen1 && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {          
+                    currentScreen = Game_language;
+
+                }
+            } 
+
+                settingsButton.Update();
                
             } break;
+
 
              case Game_language:
             {
                 // TODO: Update GAME_language screen variables here!
 
+                Rectangle collision_position = { 344, 293, 764, 219 };
+                
+                if (CheckCollisionPointRec(GetMousePosition(), collision_position)) {
+                    
+                    // isSettingOpen1 prevent the python button to be press pag nasa setting mode
+                    if (settingsButton.isSettingsOpen1 && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+                        
+                        currentScreen = slashcode;
+                    }
+                } 
 
-                // Press enter to change to ENDING screen
-                if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
-                {
-                    currentScreen = Ending;
-                }
+                settingsButton.Update();
             } break;
 
 
-          
+            case slashcode:{
+              if (IsKeyPressed(KEY_ENTER))
+            {
+                currentScreen = Ending;
+            }
+            }break;
+            questionInstance.Update();
+            questionInstance.checkQuestionAndAnswer();
+            
+
+
 
             case Ending:
             {
@@ -126,44 +156,35 @@ int main()
                     // TODO: Draw GAMEPLAY screen here!
                     //background
                     DrawRectangle(0, 0, screenWidth, screenHeight,GRAY);
-                    Color transparentBlack = Fade(BLACK, 0.8f);
-                    Rectangle roundedRect = { (screenWidth - 1002) / 2, (screenHeight - 983) / 2, 1002, 983 };
-                    DrawRectangleRounded(roundedRect, 0.1, 10, transparentBlack);
-                    
-                    DrawText("SLASHCODE", 509, 40, 70, WHITE);
-                    DrawRectangle(300,120, 850 , 3 , WHITE);
-                    DrawText("SELECT LEVEL", 559, 157, 40, WHITE);
 
-                    //button
-                    Rectangle buttonRect1 = { 344, 293, 764, 219 };
-                    Color buttonColor2 = BLACK;
-                    DrawRectangleRounded(buttonRect1, 0.4 , 10, buttonColor2);
-                    DrawText("BEGINNER LEVEL!", 378 , 368, 76 , WHITE);
+                    settingsButton.Draw();
+                    settingsButton.DrawSetting();
 
-                   
-                    
-       
                 } break;
 
                  case Game_language:
                 {
                     // TODO: Draw GAMEPLAY screen here!
-                     DrawRectangle(0, 0, screenWidth, screenHeight,GRAY);
-                    Color transparentBlack = Fade(BLACK, 0.8f);
-                    Rectangle roundedRect = { (screenWidth - 980) / 2, (screenHeight - 700) / 2, 980, 700 };
-                    DrawRectangleRounded(roundedRect, 0.1, 10, transparentBlack);
-                    
-                    
 
-                    //button
-                    Rectangle buttonRect1 = { 344, 293, 764, 219 };
-                    Color buttonColor2 = BLACK;
-                    DrawRectangleRounded(buttonRect1, 0.4 , 10, buttonColor2);
-                    DrawText("BEGINNER LEVEL!", 378 , 368, 76 , WHITE);
+                    DrawRectangle(0, 0, screenWidth, screenHeight,GRAY);
+                    settingsButton.Drawlanguage();
+                    settingsButton.DrawSetting(); 
+
 
             
 
+
                 } break;
+
+                case slashcode:{
+    
+                    settingsButton.DrawSlashcode();
+                    questionInstance.drawTextBox();
+                    questionInstance.drawUserInput();
+                    questionInstance.drawResultBox();
+
+                }break;
+
                 case Ending:
                 {
                     // TODO: Draw ENDING screen here!
@@ -178,6 +199,7 @@ int main()
     }
 
     // De-Initialization
+
     UnloadTexture(mySprite.spriteSheet);  // Unload texture
     CloseWindow();  // Close window and OpenGL context
 
