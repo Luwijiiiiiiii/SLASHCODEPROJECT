@@ -2,7 +2,7 @@
 #include "Animation.h"
 
 #include "GameDesign.h"
-#include "Question.h"
+#include "Activities.h"
 #include <iostream>
 using namespace std;
 
@@ -17,11 +17,7 @@ int main()
 
     string userInput = "";
     SettingsButton settingsButton;
-    Question questionInstance;
-    
-    
-
-
+    Activity activity;
 
     InitWindow(screenWidth, screenHeight, "Project: Slash Code (ALPHA)");
     SetTargetFPS(60);
@@ -32,7 +28,7 @@ int main()
 
     SetTargetFPS(60);
     
-
+    Rectangle inputBox = {420, 560, 100, 40};
     // Main game loop
     while (!WindowShouldClose())
     {
@@ -102,16 +98,18 @@ int main()
                 settingsButton.Update();
             } break;
 
-
+        // SLASHCODE main feature
+        //----------------------------------------------------------------------------------
             case slashcode:{
-              if (IsKeyPressed(KEY_ENTER))
-            {
-                currentScreen = Ending;
-            }
-            }break;
-            questionInstance.Update();
-            questionInstance.checkQuestionAndAnswer();
-            
+
+                if (IsKeyPressed(KEY_ESCAPE))
+                {
+                    currentScreen = Ending;
+                } 
+                activity.Input(); 
+
+            }break;           
+  //----------------Slashcode function end------------------------------------------------------------------
 
 
 
@@ -177,12 +175,11 @@ int main()
                 } break;
 
                 case slashcode:{
-    
+                    
                     settingsButton.DrawSlashcode();
-                    questionInstance.drawTextBox();
-                    questionInstance.drawUserInput();
-                    questionInstance.drawResultBox();
-
+                    activity.DrawInputBox();
+                    
+                        
                 }break;
 
                 case Ending:

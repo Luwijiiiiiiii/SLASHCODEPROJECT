@@ -111,6 +111,13 @@ void SettingsButton::Drawlanguage() {
         DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
         DrawText("PYTHON", 570 , 368, 76 , WHITE);
 }
+
+
+
+
+
+
+
 void SettingsButton::DrawSlashcode() {
 
     DrawRectangle(0, 0, 1440, 1024,WHITE);
