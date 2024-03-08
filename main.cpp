@@ -2,7 +2,7 @@
 #include "Animation.h"
 
 #include "GameDesign.h"
-#include "Question.h"
+#include "Activities.h"
 #include <iostream>
 using namespace std;
 
@@ -17,11 +17,7 @@ int main()
 
     string userInput = "";
     SettingsButton settingsButton;
-    Question questionInstance;
-    
-    
-
-
+    Activity activity;
 
     InitWindow(screenWidth, screenHeight, "Project: Slash Code (ALPHA)");
     SetTargetFPS(60);
@@ -32,7 +28,8 @@ int main()
 
     SetTargetFPS(60);
     
-
+    Rectangle nextButton = {600, 700, 120, 40};
+    Rectangle tryAgainButton = {600, 700, 160, 40};
     // Main game loop
     while (!WindowShouldClose())
     {
@@ -102,16 +99,27 @@ int main()
                 settingsButton.Update();
             } break;
 
-
+        // SLASHCODE main feature
+        //----------------------------------------------------------------------------------
             case slashcode:{
-              if (IsKeyPressed(KEY_ENTER))
-            {
-                currentScreen = Ending;
+
+                if (IsKeyPressed(KEY_ESCAPE))
+                {
+                    currentScreen = Ending;
+                } 
+                activity.Input(); 
+
+
+            if (activity.IsButtonPressed(nextButton)) {
+                // Trigger Next button action
+                activity.CheckAnswer();
+            } else if (activity.IsButtonPressed(tryAgainButton)) {
+                // Trigger Try Again button action
+                activity.CheckAnswer();
             }
-            }break;
-            questionInstance.Update();
-            questionInstance.checkQuestionAndAnswer();
-            
+
+            }break;           
+  //----------------Slashcode function end------------------------------------------------------------------
 
 
 
@@ -177,12 +185,17 @@ int main()
                 } break;
 
                 case slashcode:{
-    
+                    
                     settingsButton.DrawSlashcode();
-                    questionInstance.drawTextBox();
-                    questionInstance.drawUserInput();
-                    questionInstance.drawResultBox();
+                    activity.DrawInputBox();
+                    // Draw buttons
+                    DrawRectangleRounded(nextButton, 0.1, 10, BLUE);
+                    DrawText("Next", 630, 710, 20, WHITE);
 
+                    DrawRectangleRounded(tryAgainButton, 0.1, 10, BLUE);
+                    DrawText("Try Again", 620, 710, 20, WHITE);
+                    
+                        
                 }break;
 
                 case Ending:
