@@ -105,9 +105,9 @@ void SettingsButton::Drawlanguage() {
 
     //design
         DrawRectangleRounded(roundedRect, 0.1, 10,  Fade(BLACK, 0.8f));
-        DrawText("SLASHCODE", 509, 40, 70, WHITE);
+        DrawText("SLASHCODE", 509, 40, 70, RED);
         DrawRectangle(300,120, 850 , 3 , WHITE);
-        DrawText("SELECT LANGUAGE", 520, 157, 40, WHITE);
+        DrawText("SELECT LANGUAGE", 520, 157, 40, RED);
         DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
         DrawText("PYTHON", 570 , 368, 76 , WHITE);
 }
@@ -120,16 +120,12 @@ void SettingsButton::Drawlanguage() {
 
 void SettingsButton::DrawSlashcode() {
 
-    DrawRectangle(0, 0, 1440, 1024,WHITE);
-    DrawRectangle(0, 512, 1440, 1024,DARKGRAY);
-    DrawRectangle(0, 512, 1440, 40 ,BLACK);
-    DrawRectangle(400, 512, 5,512,BLACK );
-    DrawRectangle(1040, 512, 5,512,BLACK );
-    DrawRectangle(0,512,190,38,DARKGRAY);
-    DrawRectangle(405,512,190,38,DARKGRAY);
-    DrawRectangle(1050,512,190,38,DARKGRAY);
-    DrawText("ACTIVITY",10 , 518, 30, WHITE);
-    DrawText("Main.py",430 , 518, 30, WHITE);
+
+
+    // loob nang activity
+ 
+
+    DrawText("(\"             \")", 510,565,30, WHITE);
     DrawText("OUTPUT",1070 , 518, 30, WHITE);
     DrawText("In Python, the print function is used to output ", 10, 565, 16, WHITE);
     DrawText("information to the console or terminal. It allows ", 10, 590, 16, WHITE);   
@@ -139,7 +135,22 @@ void SettingsButton::DrawSlashcode() {
     DrawText("print(\"This is an example of printing a text.\")", 10, 685, 16, BLACK); 
     DrawRectangle(5, 775, 380, 100,WHITE );
     DrawText("INSTRUCTION:", 10, 790, 16, BLACK);  
-    DrawText("print(\"Hello World!\")", 10, 830, 16, BLACK); 
+    DrawText("print(\"Hello World\")", 10, 830, 16, BLACK); 
+    }
+ // base design nang Slashcode
+    void SettingsButton :: DrawSlashcodeBase(){
+        DrawRectangle(0, 0, 1440, 1024,WHITE);
+        DrawRectangle(0, 512, 1440, 1024,DARKGRAY);
+        DrawRectangle(0, 512, 1440, 40 ,BLACK);
+        DrawRectangle(400, 512, 5,512,BLACK );
+        DrawRectangle(1040, 512, 5,512,BLACK );
+        DrawRectangle(0,512,190,38,DARKGRAY);
+        DrawRectangle(405,512,190,38,DARKGRAY);
+        DrawRectangle(1050,512,190,38,DARKGRAY);
+        DrawText("ACTIVITY",10 , 518, 30, WHITE);
+        DrawText("Main.py",430 , 518, 30, WHITE);
+        DrawText("OUTPUT",1070 , 518, 30, WHITE);
+
     }
 
    

@@ -14,6 +14,7 @@ public:
     void DrawSetting();
     void Drawlanguage();
     void DrawSlashcode();
+    void DrawSlashcodeBase();
     void UpdateInput();
     bool isSettingsOpen1;
     std:: string userInput;
