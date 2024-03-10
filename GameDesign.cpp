@@ -105,9 +105,9 @@ void SettingsButton::Drawlanguage() {
 
     //design
         DrawRectangleRounded(roundedRect, 0.1, 10,  Fade(BLACK, 0.8f));
-        DrawText("SLASHCODE", 509, 40, 70, WHITE);
+        DrawText("SLASHCODE", 509, 40, 70, RED);
         DrawRectangle(300,120, 850 , 3 , WHITE);
-        DrawText("SELECT LANGUAGE", 520, 157, 40, WHITE);
+        DrawText("SELECT LANGUAGE", 520, 157, 40, RED);
         DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
         DrawText("PYTHON", 570 , 368, 76 , WHITE);
 }
@@ -118,19 +118,9 @@ void SettingsButton::Drawlanguage() {
 
 
 
-void SettingsButton::DrawSlashcode() {
+void SettingsButton::DrawSlashcodeAct1() {
+    // loob nang activity 1 
 
-    DrawRectangle(0, 0, 1440, 1024,WHITE);
-    DrawRectangle(0, 512, 1440, 1024,DARKGRAY);
-    DrawRectangle(0, 512, 1440, 40 ,BLACK);
-    DrawRectangle(400, 512, 5,512,BLACK );
-    DrawRectangle(1040, 512, 5,512,BLACK );
-    DrawRectangle(0,512,190,38,DARKGRAY);
-    DrawRectangle(405,512,190,38,DARKGRAY);
-    DrawRectangle(1050,512,190,38,DARKGRAY);
-    DrawText("ACTIVITY",10 , 518, 30, WHITE);
-    DrawText("Main.py",430 , 518, 30, WHITE);
-    DrawText("OUTPUT",1070 , 518, 30, WHITE);
     DrawText("In Python, the print function is used to output ", 10, 565, 16, WHITE);
     DrawText("information to the console or terminal. It allows ", 10, 590, 16, WHITE);   
     DrawText("you to display text, variables, or expressions. ", 10, 610, 16, WHITE); 
@@ -139,7 +129,40 @@ void SettingsButton::DrawSlashcode() {
     DrawText("print(\"This is an example of printing a text.\")", 10, 685, 16, BLACK); 
     DrawRectangle(5, 775, 380, 100,WHITE );
     DrawText("INSTRUCTION:", 10, 790, 16, BLACK);  
-    DrawText("print(\"Hello World!\")", 10, 830, 16, BLACK); 
+    DrawText("print Hello World", 10, 830, 16, BLACK); 
+    }
+void SettingsButton::DrawSlashcodeAct2() {
+
+    // loob nang activity 2
+    DrawText("Variables are containers for storing data values.", 10, 565, 16, WHITE);
+    DrawText("when creating a variable Python has no command ", 10, 590, 16, WHITE);   
+    DrawText("for declaring a variable. ", 10, 610, 16, WHITE); 
+    DrawText("A variable is created the moment you first assign", 10, 640, 16, WHITE); 
+    DrawText("a value to it. ", 10, 655, 16, WHITE); 
+    DrawText("The basic syntax of the variable is:", 10, 679, 16, WHITE); 
+    DrawRectangle(5, 695, 390, 80,WHITE ); 
+    DrawText("x = 5", 10, 700, 16, BLACK); 
+    DrawText("y = \"Car\"", 10, 730, 16, BLACK); 
+    DrawRectangle(5, 785, 380, 100,WHITE );
+    DrawText("INSTRUCTION:", 10, 800, 16, BLACK);  
+    DrawText("create a variable named Car", 10, 830, 16, BLACK); 
+    DrawText("and asign a value bugatti to it", 10, 845, 16, BLACK); 
+    }
+
+ // base design nang Slashcode
+    void SettingsButton :: DrawSlashcodeBase(){
+        DrawRectangle(0, 0, 1440, 1024,WHITE);
+        DrawRectangle(0, 512, 1440, 1024,DARKGRAY);
+        DrawRectangle(0, 512, 1440, 40 ,BLACK);
+        DrawRectangle(400, 512, 5,512,BLACK );
+        DrawRectangle(1040, 512, 5,512,BLACK );
+        DrawRectangle(0,512,190,38,DARKGRAY);
+        DrawRectangle(405,512,190,38,DARKGRAY);
+        DrawRectangle(1050,512,190,38,DARKGRAY);
+        DrawText("ACTIVITY",10 , 518, 30, WHITE);
+        DrawText("Main.py",430 , 518, 30, WHITE);
+        DrawText("OUTPUT",1070 , 518, 30, WHITE);
+
     }
 
    

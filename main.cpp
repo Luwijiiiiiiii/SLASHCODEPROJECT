@@ -1,9 +1,11 @@
 #include "raylib.h"
 #include "Animation.h"
-
+#include "UserInput.h"
 #include "GameDesign.h"
 #include "Activities.h"
 #include <iostream>
+
+
 using namespace std;
 
 typedef enum GAMESCREEN {Logo = 0, Title, Menu, Gameplay,Game_language, slashcode, Ending} GAMESCREEN;
@@ -15,7 +17,6 @@ int main()
     const int screenWidth = 1440;
     const int screenHeight = 1024;
 
-    string userInput = "";
     SettingsButton settingsButton;
     Activity activity;
 
@@ -28,10 +29,11 @@ int main()
 
     SetTargetFPS(60);
     
-    Rectangle inputBox = {420, 560, 100, 40};
+
     // Main game loop
     while (!WindowShouldClose())
     {
+
         
         switch(currentScreen)
         {
@@ -106,7 +108,8 @@ int main()
                 {
                     currentScreen = Ending;
                 } 
-                activity.Input(); 
+                activity.CheckAnswer();
+
 
             }break;           
   //----------------Slashcode function end------------------------------------------------------------------
@@ -138,7 +141,7 @@ int main()
                 case Logo:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("LOGO SCREEN", 20, 20, 40, LIGHTGRAY);
+                    DrawText("LOGO SCREEN", 20, 20, 40, DARKBLUE);
                     DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
 
                 } break;
@@ -153,7 +156,7 @@ int main()
                 {
                     // TODO: Draw GAMEPLAY screen here!
                     //background
-                    DrawRectangle(0, 0, screenWidth, screenHeight,GRAY);
+                    DrawRectangle(0, 0, screenWidth, screenHeight,DARKBLUE);
 
                     settingsButton.Draw();
                     settingsButton.DrawSetting();
@@ -164,7 +167,7 @@ int main()
                 {
                     // TODO: Draw GAMEPLAY screen here!
 
-                    DrawRectangle(0, 0, screenWidth, screenHeight,GRAY);
+                    DrawRectangle(0, 0, screenWidth, screenHeight,DARKBLUE);
                     settingsButton.Drawlanguage();
                     settingsButton.DrawSetting(); 
 
@@ -175,10 +178,11 @@ int main()
                 } break;
 
                 case slashcode:{
-                    
-                    settingsButton.DrawSlashcode();
+
+                    settingsButton.DrawSlashcodeBase();
                     activity.DrawInputBox();
-                    
+
+   
                         
                 }break;
 
