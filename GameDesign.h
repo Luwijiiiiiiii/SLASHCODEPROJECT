@@ -15,6 +15,7 @@ public:
     void Drawlanguage();
     void DrawSlashcodeAct1();
     void DrawSlashcodeAct2();
+    void DrawSlashcodeAct3();
     void DrawSlashcodeBase();
     void UpdateInput();
     bool isSettingsOpen1;
