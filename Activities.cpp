@@ -9,9 +9,9 @@ QuestionState currQuestion = question1;
 
 Activity::Activity(){
         //activity 1 print
-    box  = {420, 560, 80, 40};
+    box  = {420, 560, 250, 40};
     button = false;
-    box2  = {540, 560, 145, 40};
+    box2  = {420, 560, 165, 40};
     //runbutton
     runbutton = {980,519,30,30};
     RunButton =false;
@@ -24,8 +24,11 @@ Activity::Activity(){
     NextButtonbool = false;
 
     //answer question1 activity
-    strAnswer = "print";
-    strAnswer2 = "Hello World";
+    strAnswer = "print(\"Hello World!\")";
+    // answer question2 activity2
+    strAnswer2 = "Car = \"Bugatti\"";
+    strAnswer3 = "Car=\"Bugatti\"";
+    
 
     }
     //----------------------------------------------------------------------------------
@@ -49,13 +52,13 @@ void Activity::CheckAnswer() {
 
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
                 RunButton = !RunButton;
-               
             }
 
             if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
                 NextButtonbool = !NextButtonbool;
 
                 if(NextButtonbool){
+                    RunButton = !RunButton;
                     currQuestion = question2;
                 }
             }  
@@ -66,12 +69,37 @@ void Activity::CheckAnswer() {
             button = !button;
             HandleInput();
         }
+  
+
+    }break;
+
+    case (question2):
+    {
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+
+            if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
+                RunButton = !RunButton;
+                           
+            }
+
+            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                NextButtonbool = !NextButtonbool;
+
+                if(NextButtonbool){
+                    RunButton = !RunButton;
+                    currQuestion = question3;
+                    
+                    
+                }
+            }  
+
+        }
+  
         if (CheckCollisionPointRec(GetMousePosition() , box2)) {
             button = !button;
             HandleInput2();
         }
-
-      
+  
 
     }break;
     
@@ -89,29 +117,25 @@ void Activity::CheckAnswer() {
     {
     case (question1):
     {
-        lessons.DrawSlashcode();
+        lessons.DrawSlashcodeAct1();
         DrawTriangle(vertex1, vertex2, vertex3, GREEN);
         
         DrawRectangleRounded(box, 0.1, 10, WHITE);
-        DrawRectangleRounded(box2, 0.1, 10, WHITE);
+        // input 1 yeah
         if(!button);
         DrawRectangle(box.x + 5 + MeasureText(user_input.displayText.c_str(), 20), box.y + 5, 2, 30, BLACK);
         DrawText(user_input.userInput.c_str(), box.x + 5, box.y + 5, 20, BLACK);
         
-        if(!button);
-        DrawRectangle(box2.x + 5 + MeasureText(user_input.displayText2.c_str(), 20), box2.y + 5, 2, 30, BLACK);
-        DrawText(user_input.userInput2.c_str(), box2.x + 5,box2.y + 5, 20, BLACK);
-        
 
         if(RunButton){
 
-            if (user_input.userInput == strAnswer && user_input.userInput2 == strAnswer2 ){
+            if (user_input.userInput == strAnswer){
                 DrawRectangleRec(runbutton,RED);
                 DrawText("Correct!", 1080, 570, 30, GREEN);
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
                 DrawText("Next", 1085, 615, 25, RED);
 
-            } if (user_input.userInput != strAnswer || user_input.userInput2 != strAnswer2){
+            } if (user_input.userInput != strAnswer ){
                 DrawRectangleRec(runbutton,RED);
                 DrawText("Incorrect!", 1080, 570, 30, RED);
                 DrawText("Try Again", 1080, 600, 25, RED);
@@ -119,14 +143,40 @@ void Activity::CheckAnswer() {
             }
         } 
 
-        if(NextButtonbool){
-            DrawRectangle(100,100,100,100,BLACK);
-        }  
+
 
 
 
     break;
     }
+    case(question2):
+    {
+        lessons.DrawSlashcodeAct2();
+        DrawTriangle(vertex1, vertex2, vertex3, GREEN);
+        DrawRectangleRounded(box2, 0.1, 10, WHITE);
+
+        if(!button);
+        DrawRectangle(box2.x + 5 + MeasureText(user_input.displayText2.c_str(), 20), box2.y + 5, 2, 30, BLACK);
+        DrawText(user_input.userInput2.c_str(), box2.x + 5, box2.y + 5, 20, BLACK);
+
+        if(RunButton){
+
+            if (user_input.userInput2 == strAnswer2 || user_input.userInput2 == strAnswer3){
+                DrawRectangleRec(runbutton,RED);
+                DrawText("Correct!", 1080, 570, 30, GREEN);
+                DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
+                DrawText("Next", 1085, 615, 25, RED);
+
+            } else if (user_input.userInput2 != strAnswer2 || user_input.userInput2 != strAnswer3 ){
+                DrawRectangleRec(runbutton,RED);
+                DrawText("Incorrect!", 1080, 570, 30, RED);
+                DrawText("Try Again", 1080, 600, 25, RED);
+                
+            }
+        } 
+        
+    }
+
     default:
         break;
     }

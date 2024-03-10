@@ -118,15 +118,9 @@ void SettingsButton::Drawlanguage() {
 
 
 
-void SettingsButton::DrawSlashcode() {
+void SettingsButton::DrawSlashcodeAct1() {
+    // loob nang activity 1 
 
-
-
-    // loob nang activity
- 
-
-    DrawText("(\"             \")", 510,565,30, WHITE);
-    DrawText("OUTPUT",1070 , 518, 30, WHITE);
     DrawText("In Python, the print function is used to output ", 10, 565, 16, WHITE);
     DrawText("information to the console or terminal. It allows ", 10, 590, 16, WHITE);   
     DrawText("you to display text, variables, or expressions. ", 10, 610, 16, WHITE); 
@@ -135,8 +129,26 @@ void SettingsButton::DrawSlashcode() {
     DrawText("print(\"This is an example of printing a text.\")", 10, 685, 16, BLACK); 
     DrawRectangle(5, 775, 380, 100,WHITE );
     DrawText("INSTRUCTION:", 10, 790, 16, BLACK);  
-    DrawText("print(\"Hello World\")", 10, 830, 16, BLACK); 
+    DrawText("print Hello World!", 10, 830, 16, BLACK); 
     }
+void SettingsButton::DrawSlashcodeAct2() {
+
+    // loob nang activity 2
+    DrawText("Variables are containers for storing data values.", 10, 565, 16, WHITE);
+    DrawText("when creating a variable Python has no command ", 10, 590, 16, WHITE);   
+    DrawText("for declaring a variable. ", 10, 610, 16, WHITE); 
+    DrawText("A variable is created the moment you first assign", 10, 640, 16, WHITE); 
+    DrawText("a value to it. ", 10, 655, 16, WHITE); 
+    DrawText("The basic syntax of the variable is:", 10, 689, 16, WHITE); 
+    DrawRectangleRounded((Rectangle){5, 710, 300, 70}, 0.1, 10 ,WHITE ); 
+    DrawText("x = 5", 15, 715, 16, BLACK); 
+    DrawText("y = \"Car\"", 15, 745, 16, BLACK); 
+    DrawRectangleRounded((Rectangle){5, 820, 330, 100}, 0.1, 10, WHITE );
+    DrawText("INSTRUCTION:", 10, 825, 16, BLACK);  
+    DrawText("create a variable named Car", 10, 855, 16, BLACK); 
+    DrawText("and asign a value Bugatti to it", 10, 875, 16, BLACK); 
+    }
+
  // base design nang Slashcode
     void SettingsButton :: DrawSlashcodeBase(){
         DrawRectangle(0, 0, 1440, 1024,WHITE);

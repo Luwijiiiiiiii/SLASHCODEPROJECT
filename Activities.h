@@ -29,7 +29,10 @@ class Activity{
 
     //answer queastion1 actvity
     std:: string strAnswer;
+    // answer question2 activty2
     std:: string strAnswer2;
+    std:: string strAnswer3;
+
     //next butto
     Rectangle nextbutton;
     bool NextButtonbool;

@@ -7,18 +7,22 @@
 class UserInput{
 
     public:
+    // activity
     UserInput();
-    UserInput2();
     void Input();
     void Input2();
+    void Input3();
+    bool mouseOnText;
     std::string userInput;
     std::string displayText;
     std::string displayText2;
+    std:: string displayText3;
+    std::string userInput3;
     int textWidth;
     bool type;
     Rectangle inputBox;
     std::string userInput2;
     bool type2;
-    Rectangle inputBox1;
+    Rectangle inputBox2;
     ;
 };
