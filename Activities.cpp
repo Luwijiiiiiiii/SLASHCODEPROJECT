@@ -17,15 +17,21 @@ Activity::Activity(){
     box3 = {420, 560, 115, 40};
     box4 = {420, 615, 175, 40};
     button1 = false;
+    //activity 4
+    box5 = {420, 560, 115, 40};
+    box6 = {420, 610, 115, 40};
+    box7 = {420, 670, 175, 40};
+    button2 = false;
+
     //runbutton
-    runbutton = {980,519,30,30};
+    runbutton = {1320,519,30,30};
     RunButton =false;
     //button style triangle p
-    vertex1 = {980 + 30, 534};    
-    vertex2 = {980, 534 - 15};      
-    vertex3 = {980, 534 + 15};
+    vertex1 = {1320 + 30, 534};    
+    vertex2 = {1320 , 534 - 15};      
+    vertex3 = {1320 , 534 + 15};
     //Nextbutton
-    nextbutton = {1080, 610, 70, 40};
+    nextbutton = {420, 625, 120, 50};
     NextButtonbool = false;
 
     //answer question1 activity
@@ -38,25 +44,37 @@ Activity::Activity(){
     strAnswer5 = "print(x)";
     strAnswer6 = "x=10";
     strAnswer7 = "print( x )";
+    // answer questioon4 activity
+    strAnswer8 = "x = 10";
+    strAnswer9 = "x=10";
+    strAnswer10 = "y = 10";
+    strAnswer11 = "y=10";
+    strAnswer12 = "print(x+y)";
+    strAnswer13 = "print(x + y)";
+    strAnswer14 = "print( x + y )";
 
     
 
     }
-    //----------------------------------------------------------------------------------
+//-it hundles the user input(can't direct put the fuction of the input)-----------------------------------------------------------------------
+//act 1
+void Activity::HandleInput(){ user_input.Input(); }
 
-void Activity::HandleInput(){
-    user_input.Input();
-}
 //activity 2
-void Activity::HandleInput2(){
-    user_input.Input2();
-}
-void Activity::HandleInput3(){
-    user_input.Input3();
-}
-void Activity::HandleInput4(){
-    user_input.Input4();
-}
+void Activity::HandleInput2(){ user_input.Input2(); }
+
+// act 3
+void Activity::HandleInput3(){ user_input.Input3(); }
+void Activity::HandleInput4(){ user_input.Input4(); }
+
+// act 4
+void Activity::HandleInput5(){ user_input.Input5(); }
+void Activity::HandleInput6(){ user_input.Input6(); }
+void Activity::HandleInput7(){ user_input.Input7(); }
+
+
+
+
 
 void Activity::CheckAnswer() {
 
@@ -71,6 +89,8 @@ void Activity::CheckAnswer() {
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
                 RunButton = !RunButton;
                 
+                
+                
             }
 
             if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
@@ -79,6 +99,7 @@ void Activity::CheckAnswer() {
                 if(NextButtonbool){
                     RunButton = !RunButton;
                     currQuestion = question2;
+                    
                 }
             }  
 
@@ -98,6 +119,7 @@ void Activity::CheckAnswer() {
 
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
                 RunButton = !RunButton;
+                //currQuestion = question3;
                 
                 
                            
@@ -131,7 +153,7 @@ void Activity::CheckAnswer() {
 
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
                 RunButton = !RunButton;
-                           
+                          //currQuestion = question4; 
             }
 
             if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
@@ -158,6 +180,42 @@ void Activity::CheckAnswer() {
         }
    
   
+
+    }break;
+
+    case (question4):
+    {
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+
+            if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
+                RunButton = !RunButton;
+                          //currQuestion = question4; 
+            }
+
+            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                NextButtonbool = !NextButtonbool;
+
+                if(NextButtonbool){
+                    RunButton = !RunButton;
+                    currQuestion = question1;
+
+                }
+            }  
+
+        }
+  
+        if (CheckCollisionPointRec(GetMousePosition() , box5)) {
+            button = !button;
+            HandleInput5();
+        }
+        if (CheckCollisionPointRec(GetMousePosition() , box6)) {
+            button1 = !button1;
+            HandleInput6();
+        }
+        if (CheckCollisionPointRec(GetMousePosition() , box7)) {
+            button2 = !button2;
+            HandleInput7();
+        }
 
     }break;
     
@@ -190,14 +248,16 @@ void Activity::CheckAnswer() {
 
             if (user_input.userInput == strAnswer){
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Correct!", 1080, 570, 30, GREEN);
+                DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
+                DrawText("Correct!", 430, 570, 46, WHITE);
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
-                DrawText("Next", 1085, 615, 25, RED);
+                DrawText("NEXT", 430, 635, 35, WHITE);
 
             } else{
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Incorrect!", 1080, 570, 30, RED);
-                DrawText("Try Again", 1080, 600, 25, RED);
+                DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
+                DrawText("Incorrect!", 430, 570, 46, RED);
+                DrawText("Try Again", 430, 635, 35, RED);
                 
             }
         } 
@@ -224,14 +284,16 @@ void Activity::CheckAnswer() {
 
             if (user_input.userInput2 == strAnswer2 || user_input.userInput2 == strAnswer3){
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Correct!", 1080, 570, 30, GREEN);
+                DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
+                DrawText("Correct!", 430, 570, 46, WHITE);
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
-                DrawText("Next", 1085, 615, 25, RED);
+                DrawText("NEXT", 430, 635, 35, WHITE);
 
             } else{
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Incorrect!", 1080, 570, 30, RED);
-                DrawText("Try Again", 1080, 600, 25, RED);
+                DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
+                DrawText("Incorrect!", 430, 570, 46, RED);
+                DrawText("Try Again", 430, 635, 35, RED);
                 
             }
         } 
@@ -261,21 +323,64 @@ void Activity::CheckAnswer() {
             if ((user_input.userInput3 == strAnswer4 || user_input.userInput3 == strAnswer6) &&
                 (user_input.userInput4 == strAnswer5 || user_input.userInput4 == strAnswer7)) {
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Correct!", 1080, 570, 30, GREEN);
+                DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
+                DrawText("Correct!", 430, 570, 46, WHITE);
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
-                DrawText("Next", 1085, 615, 25, RED);
+                DrawText("NEXT", 430, 635, 35, WHITE);
 
             } 
             else{
                 DrawRectangleRec(runbutton,RED);
-                DrawText("Incorrect!", 1080, 570, 30, RED);
-                DrawText("Try Again", 1080, 600, 25, RED);
+                DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
+                DrawText("Incorrect!", 430, 570, 46, RED);
+                DrawText("Try Again", 430, 635, 35, RED);
+                
             }
         } 
     break;  
     }
+    case(question4):
+    {
+    
+        lessons.DrawSlashcodeAct4();
+        DrawTriangle(vertex1, vertex2, vertex3, GREEN);
+        DrawRectangleRounded(box5, 0.1, 10, WHITE);
+        DrawRectangleRounded(box6, 0.1, 10, WHITE);
+        DrawRectangleRounded(box7, 0.1, 10, WHITE);
 
-    default:0
+        if(!button);
+            DrawRectangle(box5.x + 5 + MeasureText(user_input.displayText5.c_str(), 20), box5.y + 5, 2, 30, BLACK);
+            DrawText(user_input.userInput5.c_str(), box5.x + 5, box5.y + 5, 20, BLACK);
+        if(!button1);
+            DrawRectangle(box6.x + 5 + MeasureText(user_input.displayText6.c_str(), 20), box6.y + 5, 2, 30, BLACK);
+            DrawText(user_input.userInput6.c_str(), box6.x + 5, box6.y + 5, 20, BLACK);
+        if(!button2);
+            DrawRectangle(box7.x + 5 + MeasureText(user_input.displayText7.c_str(), 20), box7.y + 5, 2, 30, BLACK);
+            DrawText(user_input.userInput7.c_str(), box7.x + 5, box7.y + 5, 20, BLACK);
+
+        if (RunButton){
+        if ((user_input.userInput5 == strAnswer8 || user_input.userInput5 == strAnswer9) &&
+            (user_input.userInput6 == strAnswer10 || user_input.userInput6 == strAnswer11)&&
+            (user_input.userInput7 == strAnswer12 || user_input.userInput7 == strAnswer13 || user_input.userInput7 == strAnswer14)) {
+                DrawRectangleRec(runbutton,RED);
+                DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
+                DrawText("Correct!", 430, 570, 46, WHITE);
+                DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
+                DrawText("NEXT", 430, 635, 35, WHITE);
+
+            } 
+            else{
+                DrawRectangleRec(runbutton,RED);
+                DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
+                DrawText("Incorrect!", 430, 570, 46, RED);
+                DrawText("Try Again", 430, 635, 35, RED);
+            }    
+        }
+
+    break;
+    }
+
+    default:
         break;
     }
    

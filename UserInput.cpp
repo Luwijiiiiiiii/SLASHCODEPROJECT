@@ -13,15 +13,20 @@ UserInput::UserInput(){
     //input3
     userInput3 = "";
     inputBox3 = {420, 560, 115, 40};
-    //input4
     userInput4 = "";
     inputBox4 = {420, 615, 175, 40};
+    //input4
+    userInput5 = "";
+    inputBox5 = {420, 560, 115, 40};
+    userInput6 = "";
+    inputBox6 = {420, 610, 115, 40};
+    userInput7 = "";
+    inputBox7 = {420, 670, 175, 40};
     
 }
 
 
-
-
+//----------------IINPUT 1----------------------------------------------------
 void UserInput::Input() {
     // make the shift not toggle
         if (CheckCollisionPointRec(GetMousePosition(), inputBox))mouseOnText = true;
@@ -59,6 +64,8 @@ void UserInput::Input() {
 }
 
 //-----------------------------------------------------------------------------------------------
+
+//---------------input 2--------------------------------------------------------------------------------
 void UserInput::Input2() {
     // make the shift not toggle
         if (CheckCollisionPointRec(GetMousePosition(), inputBox2))mouseOnText = true;
@@ -94,7 +101,7 @@ void UserInput::Input2() {
         }
 
 }
-
+//-----------------------------------------------------------------------------------------------
 
 //------------------------input 3-----------------------------------------------------------------------
 void UserInput::Input3() {
@@ -165,6 +172,119 @@ void UserInput::Input4() {
             userInput4.pop_back();
             displayText4 = (type ? "[Caps]" : "[Lower]") + userInput4;
             textWidth4 = MeasureText(displayText4.c_str(), 20);
+    }
+    
+}
+//----------------------------------------------------------------------------------------------
+
+
+
+//------------activity 4---------------------------------------------------------------------
+
+void UserInput::Input5() {
+ 
+    if (CheckCollisionPointRec(GetMousePosition(), inputBox5))mouseOnText = true;
+    else mouseOnText = false;
+    std::string displayText5 = (type ? "[Caps]" : "[Lower]") + userInput5;
+
+        if (mouseOnText)
+        {
+            int key = GetCharPressed();
+            // Check if more characters have been pressed on the same frame
+            while (key > 0)
+            {
+                // NOTE: Only allow keys in range [32..125]
+                if ((key >= 32) && (key <= 125))
+                {
+                    userInput5 += (char)key;
+
+                }
+
+                key = GetCharPressed(); 
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && !userInput5.empty()) {
+                userInput5.pop_back();
+            }
+  
+            }
+            int textWidth5 = MeasureText(displayText5.c_str(), 20);
+            while (textWidth5 > inputBox5.width + 50) { 
+            userInput5.pop_back();
+            displayText5 = (type ? "[Caps]" : "[Lower]") + userInput5;
+            textWidth5 = MeasureText(displayText5.c_str(), 20);
+    }
+    
+}
+//INPUT 2 ACT 4
+void UserInput::Input6() {
+ 
+    if (CheckCollisionPointRec(GetMousePosition(), inputBox6))mouseOnText = true;
+    else mouseOnText = false;
+    std::string displayText6 = (type ? "[Caps]" : "[Lower]") + userInput6;
+
+        if (mouseOnText)
+        {
+            int key = GetCharPressed();
+            // Check if more characters have been pressed on the same frame
+            while (key > 0)
+            {
+                // NOTE: Only allow keys in range [32..125]
+                if ((key >= 32) && (key <= 125))
+                {
+                    userInput6 += (char)key;
+
+                }
+
+                key = GetCharPressed(); 
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && !userInput6.empty()) {
+                userInput6.pop_back();
+            }
+  
+            }
+            int textWidth6 = MeasureText(displayText6.c_str(), 20);
+            while (textWidth6 > inputBox5.width + 50) { 
+            userInput6.pop_back();
+            displayText6 = (type ? "[Caps]" : "[Lower]") + userInput6;
+            textWidth6 = MeasureText(displayText6.c_str(), 20);
+    }
+    
+}
+// input 3 act 4
+void UserInput::Input7() {
+ 
+    if (CheckCollisionPointRec(GetMousePosition(), inputBox7))mouseOnText = true;
+    else mouseOnText = false;
+    std::string displayText7 = (type ? "[Caps]" : "[Lower]") + userInput7;
+
+        if (mouseOnText)
+        {
+            int key = GetCharPressed();
+            // Check if more characters have been pressed on the same frame
+            while (key > 0)
+            {
+                // NOTE: Only allow keys in range [32..125]
+                if ((key >= 32) && (key <= 125))
+                {
+                    userInput7 += (char)key;
+
+                }
+
+                key = GetCharPressed(); 
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && !userInput7.empty()) {
+                userInput7.pop_back();
+            }
+  
+            }
+            int textWidth7 = MeasureText(displayText7.c_str(), 20);
+            while (textWidth7 > inputBox7.width + 50) { 
+            userInput7.pop_back();
+            displayText7 = (type ? "[Caps]" : "[Lower]") + userInput7;
+            textWidth7 = MeasureText(displayText6.c_str(), 20);
     }
     
 }

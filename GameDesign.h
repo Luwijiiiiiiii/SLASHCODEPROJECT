@@ -16,6 +16,7 @@ public:
     void DrawSlashcodeAct1();
     void DrawSlashcodeAct2();
     void DrawSlashcodeAct3();
+    void DrawSlashcodeAct4();
     void DrawSlashcodeBase();
     void UpdateInput();
     bool isSettingsOpen1;
@@ -38,6 +39,8 @@ private:
     Rectangle Xshape;
     Rectangle Xshape1;
     Rectangle Xshape1_Collision;
+    bool hover;
+    
     
 
 };

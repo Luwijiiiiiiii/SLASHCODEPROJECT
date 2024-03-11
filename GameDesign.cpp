@@ -4,6 +4,7 @@ SettingsButton::SettingsButton() {
     // initialize
     roundedRect = { (1440 - 1002) / 2, (1024 - 983) / 2, 1002, 983 };
     buttonRect1 = { 344, 293, 764, 219 };
+    hover = false;
 
     settingsButton = { 20, 20, 30, 30 };
     // bool for the setting
@@ -59,12 +60,20 @@ void SettingsButton::Update() {
 void SettingsButton::Draw() {
 
     //design
-        DrawRectangleRounded(roundedRect, 0.1, 10,  Fade(BLACK, 0.8f));
-        DrawText("SLASHCODE", 509, 40, 70, WHITE);
-        DrawRectangle(300,120, 850 , 3 , WHITE);
-        DrawText("SELECT LEVEL", 559, 157, 40, WHITE);
-        DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
-        DrawText("BEGINNER LEVEL!", 378 , 368, 76 , WHITE);
+    if (CheckCollisionPointRec(GetMousePosition(), buttonRect1))hover = true;
+    else hover = false;
+    
+    DrawRectangleRounded(roundedRect, 0.1, 10,(Color){10,18,42,255}  );
+    DrawText("SLASHCODE", 509, 40, 70, (Color){218,221,216,255});
+    DrawRectangle(300,120, 850 , 3 , (Color){218,221,216,255});
+    DrawText("SELECT LEVEL", 559, 157, 40, (Color){218,221,216,255});
+    DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
+    DrawText("BEGINNER LEVEL!", 378 , 368, 76 , (Color){218,221,216,255});
+    
+    if(hover){
+        DrawRectangleRoundedLines((Rectangle){344, 293, 764, 219 }, 0.4 , 10,2, RED);
+    }
+
 }
 void SettingsButton::DrawSetting(){
     
@@ -102,14 +111,19 @@ void SettingsButton::DrawSetting(){
     }
 }
 void SettingsButton::Drawlanguage() {
+    if(CheckCollisionPointRec(GetMousePosition(), buttonRect1))hover = true;
+    else hover = false;
 
     //design
-        DrawRectangleRounded(roundedRect, 0.1, 10,  Fade(BLACK, 0.8f));
-        DrawText("SLASHCODE", 509, 40, 70, RED);
-        DrawRectangle(300,120, 850 , 3 , WHITE);
-        DrawText("SELECT LANGUAGE", 520, 157, 40, RED);
-        DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
-        DrawText("PYTHON", 570 , 368, 76 , WHITE);
+    DrawRectangleRounded(roundedRect, 0.1, 10,(Color){10,18,42,255}  );
+    DrawText("SLASHCODE", 509, 40, 70, (Color){218,221,216,255});
+    DrawRectangle(300,120, 850 , 3 , (Color){218,221,216,255});
+    DrawText("SELECT LEVEL", 559, 157, 40, (Color){218,221,216,255});
+    DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
+    DrawText("PYTHON", 578 , 368, 76 , (Color){218,221,216,255});
+        if(hover){
+        DrawRectangleRoundedLines((Rectangle){344, 293, 764, 219 }, 0.4 , 10,2, RED);
+    }
 }
 
 
@@ -130,6 +144,7 @@ void SettingsButton::DrawSlashcodeAct1() {
     DrawRectangle(5, 775, 380, 100,WHITE );
     DrawText("INSTRUCTION:", 10, 790, 16, BLACK);  
     DrawText("print Hello World!", 10, 830, 16, BLACK); 
+    DrawText("Hover the mouse into the white box to input your code", 410, 665, 26, WHITE);
     }
 void SettingsButton::DrawSlashcodeAct2() {
 
@@ -150,7 +165,7 @@ void SettingsButton::DrawSlashcodeAct2() {
     }
 void SettingsButton::DrawSlashcodeAct3() {
 
-    // loob nang activity 2
+    // loob nang activity 3
     DrawText("Variables are containers for storing data values.", 10, 565, 16, WHITE);
     DrawText("when creating a variable Python has no command ", 10, 590, 16, WHITE);   
     DrawText("for declaring a variable. ", 10, 610, 16, WHITE); 
@@ -165,20 +180,40 @@ void SettingsButton::DrawSlashcodeAct3() {
     DrawText("Display the Value of 10", 10, 855, 16, BLACK); 
     DrawText("Using Variable x.", 10, 875, 16, BLACK); 
     }
+void SettingsButton::DrawSlashcodeAct4() {
+
+    // loob nang activity 2
+    DrawText("PYTHON OPERATORS: Arithmetic Operators ", 10, 565, 16, WHITE); 
+    DrawText("Arithmetic operators are used with numeric ", 10, 600, 16, WHITE); 
+    DrawText("values to perform common mathematical operations: ", 10, 615, 16, WHITE); 
+    DrawText("Operator   Name            Example", 10, 655, 16, WHITE); 
+    DrawText("+          Addtion             x + y", 10, 680, 16, WHITE); 
+    DrawText("-          Subtraction       x + y", 10, 700 , 16, WHITE); 
+    DrawText("*          Multiplication      x + y", 10, 720 , 16, WHITE); 
+    DrawText("/          Division            x + y", 10, 740 , 16, WHITE);
+
+    DrawRectangleRounded((Rectangle){5, 760 + 20 , 280, 80}, 0.1, 10 ,WHITE ); 
+    DrawText("<var1> = <value1>", 15, 780, 16, BLACK); 
+    DrawText("<var2> = <value2>)", 15, 800, 16, BLACK); 
+    DrawText("print(va1 + var2)", 15, 825, 16, BLACK); 
+    DrawRectangleRounded((Rectangle){5, 870, 330, 80}, 0.1, 10, WHITE );
+    DrawText("INSTRUCTION:", 10, 875, 16, BLACK);  
+    DrawText("Display the sum of 10 + 10", 10, 895, 16, BLACK); 
+    DrawText("Using Variables x and y.", 10, 915 , 16, BLACK); 
+    }
 
  // base design nang Slashcode
     void SettingsButton :: DrawSlashcodeBase(){
         DrawRectangle(0, 0, 1440, 1024,WHITE);
-        DrawRectangle(0, 512, 1440, 1024,DARKGRAY);
+        DrawRectangle(400, 512, 1440, 1024,(Color){59,59,59,255});
+        DrawRectangle(0, 512, 400, 1024,(Color){24,24,24,255});
         DrawRectangle(0, 512, 1440, 40 ,BLACK);
         DrawRectangle(400, 512, 5,512,BLACK );
-        DrawRectangle(1040, 512, 5,512,BLACK );
-        DrawRectangle(0,512,190,38,DARKGRAY);
-        DrawRectangle(405,512,190,38,DARKGRAY);
-        DrawRectangle(1050,512,190,38,DARKGRAY);
+        DrawRectangle(0,512,190,38,(Color){24,24,24,255});
+        DrawRectangle(405,512,190,38,(Color){59,59,59,255});
         DrawText("ACTIVITY",10 , 518, 30, WHITE);
         DrawText("Main.py",430 , 518, 30, WHITE);
-        DrawText("OUTPUT",1070 , 518, 30, WHITE);
+       
 
     }
 

@@ -156,7 +156,7 @@ int main()
                 {
                     // TODO: Draw GAMEPLAY screen here!
                     //background
-                    DrawRectangle(0, 0, screenWidth, screenHeight,DARKBLUE);
+                    DrawRectangle(0, 0, screenWidth, screenHeight,(Color){124,0,0,255});
 
                     settingsButton.Draw();
                     settingsButton.DrawSetting();
@@ -167,7 +167,7 @@ int main()
                 {
                     // TODO: Draw GAMEPLAY screen here!
 
-                    DrawRectangle(0, 0, screenWidth, screenHeight,DARKBLUE);
+                    DrawRectangle(0, 0, screenWidth, screenHeight,(Color){124,0,0,255});
                     settingsButton.Drawlanguage();
                     settingsButton.DrawSetting(); 
 
