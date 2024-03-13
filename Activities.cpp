@@ -70,21 +70,21 @@ void Activity::CheckAnswer() {
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
 
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
-                RunButton = !RunButton;
-                
-                
+                RunButton = !RunButton;  
  
             }
 
-            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
-                NextButtonbool = !NextButtonbool;
+            if(RunButton){
+                if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                    NextButtonbool = !NextButtonbool;
 
-                if(NextButtonbool){
-                    RunButton = !RunButton;
+                    if(NextButtonbool){
                     currQuestion = question2;
+                    RunButton = !RunButton;
                     
-                }
-            }  
+                    }
+                }  
+            }
 
         }
   
@@ -107,19 +107,18 @@ void Activity::CheckAnswer() {
                 
                            
             }
+      
+            if(RunButton){
+                if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                    NextButtonbool = !NextButtonbool;
 
-            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
-                NextButtonbool = !NextButtonbool;
-
-                if(NextButtonbool){
-                    RunButton = !RunButton;
+                    if(NextButtonbool){
                     currQuestion = question3;
+                    RunButton = !RunButton;
                     
-                    
-                    
-                }
-            }  
-
+                    }
+                }  
+            }
         }
   
         if (CheckCollisionPointRec(GetMousePosition() , box2)) {
@@ -139,17 +138,17 @@ void Activity::CheckAnswer() {
     
             }
 
-            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
-                NextButtonbool = !NextButtonbool;
+            if(RunButton){
+                if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                    NextButtonbool = !NextButtonbool;
 
-                if(NextButtonbool){
-                    RunButton = !RunButton;
+                    if(NextButtonbool){
                     currQuestion = question4;
+                    RunButton = !RunButton;
                     
-                    
-                    
-                }
-            }  
+                    }
+                }  
+            }
 
         }
   
@@ -174,15 +173,17 @@ void Activity::CheckAnswer() {
                 RunButton = !RunButton;
             }
 
-            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
-                NextButtonbool = !NextButtonbool;
+           if(RunButton){
+                if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                    NextButtonbool = !NextButtonbool;
 
-                if(NextButtonbool){
-                    RunButton = !RunButton;
+                    if(NextButtonbool){
                     currQuestion = question5;
-
-                }
-            }  
+                    RunButton = !RunButton;
+                    
+                    }
+                }  
+            }
 
         }
   
@@ -209,15 +210,17 @@ void Activity::CheckAnswer() {
                 RunButton = !RunButton;
             }
 
-            if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
-                NextButtonbool = !NextButtonbool;
+            if(RunButton){
+                if (CheckCollisionPointRec(GetMousePosition() , nextbutton)) {
+                    NextButtonbool = !NextButtonbool;
 
-                if(NextButtonbool){
+                    if(NextButtonbool){
+                    currQuestion = question1;
                     RunButton = !RunButton;
-                    // currQuestion = question1;
-
-                }
-            }  
+                    
+                    }
+                }  
+            }
 
         }
   

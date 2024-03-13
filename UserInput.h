@@ -21,7 +21,7 @@ class UserInput{
     bool mouseOnText;
     int textWidth;
     bool type;
-    bool type2;
+ 
 
     //----ACTIVITY 1------
     std::string userInput;

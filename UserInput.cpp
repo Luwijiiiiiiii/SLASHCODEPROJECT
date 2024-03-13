@@ -7,7 +7,6 @@ UserInput::UserInput(){
     inputBox  = {420, 560, 250, 40};
     mouseOnText = false;
     //input2
-    type2 = false;
     userInput2 = "";
     inputBox2  = {420, 560, 179, 40};
     //input3

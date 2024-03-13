@@ -25,7 +25,7 @@ int main()
     GAMESCREEN currentScreen = Logo;
     int framesCounter = 0;
     // Create an instance of AnimatedSprite
-    AnimatedSprite mySprite("resources/bg/Main.png", 1440, 1024, 15, 0.2f);
+    AnimatedSprite mySprite("main.png", 1440, 1024, 15, 0.2f);
 
     SetTargetFPS(60);
     
