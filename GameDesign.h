@@ -17,6 +17,8 @@ public:
     void DrawSlashcodeAct2();
     void DrawSlashcodeAct3();
     void DrawSlashcodeAct4();
+    void DrawSlashcodeAct5();
+    void DrawSlashcodeAct6();
     void DrawSlashcodeBase();
     void UpdateInput();
     bool isSettingsOpen1;

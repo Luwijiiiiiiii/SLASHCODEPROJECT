@@ -199,8 +199,44 @@ void SettingsButton::DrawSlashcodeAct4() {
     DrawRectangleRounded((Rectangle){5, 870, 330, 80}, 0.1, 10, WHITE );
     DrawText("INSTRUCTION:", 10, 875, 16, BLACK);  
     DrawText("Display the sum of 10 + 10", 10, 895, 16, BLACK); 
-    DrawText("Using Variables x and y.", 10, 915 , 16, BLACK); 
+    DrawText("Using Variables x in box 1 and y in box 2.", 10, 915 , 16, BLACK); 
     }
+void SettingsButton::DrawSlashcodeAct5() {
+
+    // loob nang activity 5
+    DrawText("PYTHON DATA TYPE ", 10, 565, 16, WHITE); 
+    DrawText("data types are classifications that specify which\n type of value a particular variable can hold.  ", 10, 600, 16, WHITE); 
+    DrawText("Numeric Types:", 10, 655, 16, WHITE); 
+    DrawText("Integers: This value is represented by int class.\nIt contains positive or negative whole numbers ", 10, 680, 16, WHITE); 
+    DrawText("float: Floating-point type represents numbers \nwith decimal points.\n\ninteger = int \n\nfloat = flaot\n\nExample:", 10, 720 , 16, WHITE);
+    DrawRectangleRounded((Rectangle){5, 780 + 70 , 280, 80}, 0.1, 10 ,WHITE ); 
+    DrawText("<variable> = <integer>\nx = 10", 15, 805+50, 16, BLACK); 
+    DrawText("", 15, 800+50, 16, BLACK); 
+    DrawText("<Variable> = <float>\ny = 6.8", 15, 845+50, 16, BLACK); 
+    DrawText("what kind of data type is variable x\n\nx = 10", 410, 570, 26, WHITE); 
+    DrawText("what kind of data type is variable y\n\ny = 3.9", 410, 700, 26, WHITE); 
+
+    
+    }
+
+void SettingsButton::DrawSlashcodeAct6() {
+
+    // loob nang activity 2
+    DrawText("PYTHON DATA TYPE ", 10, 565, 16, WHITE); 
+    DrawText("data types are classifications that specify which\n type of value a particular variable can hold.  ", 10, 600, 16, WHITE); 
+    DrawText("Numeric Types:", 10, 655, 16, WHITE); 
+    DrawText("Integers: This value is represented by int class.\nIt contains positive or negative whole numbers ", 10, 680, 16, WHITE); 
+    DrawText("float: Floating-point type represents numbers \nwith decimal points.\n\ninteger = int \n\nfloat = flaot\n\nExample:", 10, 720 , 16, WHITE);
+    DrawRectangleRounded((Rectangle){5, 780 + 70 , 280, 80}, 0.1, 10 ,WHITE ); 
+    DrawText("<variable> = <integer>\nx = 10", 15, 805+50, 16, BLACK); 
+    DrawText("", 15, 800+50, 16, BLACK); 
+    DrawText("<Variable> = <float>\ny = 6.8", 15, 845+50, 16, BLACK); 
+    DrawText("what kind of data type is variable x\n\nx = 10", 410, 570, 26, WHITE); 
+    
+}
+
+
+
 
  // base design nang Slashcode
     void SettingsButton :: DrawSlashcodeBase(){

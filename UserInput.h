@@ -15,8 +15,7 @@ class UserInput{
     void Input3();
     void Input4();
     void Input5();
-    void Input6();
-    void Input7();
+ 
 
     //conditions
     bool mouseOnText;
@@ -55,6 +54,12 @@ class UserInput{
     Rectangle inputBox7;
     std:: string displayText7;
 
-
+    //----actvity 5--------
+    std::string userInput8;
+    Rectangle inputBox8;
+    std:: string displayText8;
+    std::string userInput9;
+    Rectangle inputBox9;
+    std:: string displayText9;
 
 };
