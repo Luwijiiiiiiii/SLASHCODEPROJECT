@@ -25,7 +25,7 @@ int main()
     GAMESCREEN currentScreen = Logo;
     int framesCounter = 0;
     // Create an instance of AnimatedSprite
-    AnimatedSprite mySprite("main.png", 1440, 1024, 15, 0.2f);
+    AnimatedSprite mySprite("resources/bg/intro.png","resources/bg/third.png", 1440, 1024, 11, 0.3f);
 
     SetTargetFPS(60);
     
@@ -54,7 +54,7 @@ int main()
                 // TODO: Update TITLE screen variables here!
                 
                 float deltaTime = GetFrameTime();
-                mySprite.UpdatePro(deltaTime, 13);
+                mySprite.Update2nd(deltaTime);
                 // Press enter to change to GAMEPLAY screen
                 if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
                 {
