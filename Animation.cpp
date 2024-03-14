@@ -9,6 +9,16 @@ AnimatedSprite::AnimatedSprite(const char* filename, int spriteWidth, int sprite
     frameCount = frames;
     currentFrame = 0;
 }
+AnimatedSprite::AnimatedSprite(const char* filename,const char* FileName, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
+{
+    spriteSheet = LoadTexture(filename);
+    spriteSheet2 = LoadTexture(FileName);
+    sourceRect = { 0.0f, 0.0f, (float)spriteWidth, (float)spriteHeight };
+    position = { 0.0f, 0.0f };
+    frameTime = animationSpeed;
+    frameCount = frames;
+    currentFrame = 0;
+}
 
 
 void AnimatedSprite::Update(float deltaTime)
@@ -23,6 +33,26 @@ void AnimatedSprite::Update(float deltaTime)
             currentFrame = 0;
 
         sourceRect.x = (float)(currentFrame * sourceRect.width);
+    }
+}
+void AnimatedSprite::Update2nd(float deltaTime)
+{
+    frameTime -= deltaTime;
+    if(frameTime <= 0.0f)
+    {
+        frameTime = 0.2f;
+        currentFrame++;
+        sourceRect.x = (float)(currentFrame * sourceRect.width);
+        if(currentFrame >= frameCount) 
+        {
+            spriteSheet = spriteSheet2;
+            currentFrame = 0;
+            currentFrame++;
+            sourceRect.x = (float)(currentFrame * sourceRect.width);
+        }
+            
+
+        
     }
 }
 void AnimatedSprite::UpdatePro(float deltaTime , int limitofFrames)
