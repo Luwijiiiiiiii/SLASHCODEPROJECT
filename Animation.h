@@ -14,11 +14,11 @@ public:
     int frameLimit;
     int currentFrame3rd;
 
-    AnimatedSprite(const char* filename, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
-    AnimatedSprite(const char* filename, const char* FileName, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
+    void animatedSprite(const char* filename, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
+    void animatedSprite(const char* filename,int spriteX, int spriteY, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
+    void animatedSprite(const char* filename, const char* FileName, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
     //void update is for looped animation
-    AnimatedSprite(const char* filename, const char* FileName,const char* FileNAME, int spriteWidth, int spriteHeight, int frames, float animationSpeed);
-
+    void UpdateHp(float deltaTime, int hp);
     void Update(float deltaTime);
     void Update2nd(float deltaTime);
     void Update3rd(float deltaTime);

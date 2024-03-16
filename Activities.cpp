@@ -1,10 +1,12 @@
 #include "Activities.h"
 #include "UserInput.h"
 #include "GameDesign.h"
-
+#include "Animation.h"
+#include "Entity.h"
 UserInput user_input;
 SettingsButton lessons;
 QuestionState currQuestion = question1;
+
 
 
 Activity::Activity(){
@@ -71,7 +73,7 @@ void Activity::CheckAnswer() {
 
             if (CheckCollisionPointRec(GetMousePosition() , runbutton)) {
                 RunButton = !RunButton;  
- 
+
             }
 
             if(RunButton){
@@ -243,9 +245,9 @@ void Activity::CheckAnswer() {
 
 
 }
+//return 1 for true and 0 for false
+void Activity::DrawInputBox(){
 
- void Activity::DrawInputBox(){
-    
     switch (currQuestion)
     {
     case (question1):
@@ -267,6 +269,7 @@ void Activity::CheckAnswer() {
                 DrawRectangleRec(runbutton,RED);
                 DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
                 DrawText("Correct!", 430, 570, 46, WHITE);
+
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
                 DrawText("NEXT", 430, 635, 35, WHITE);
 
@@ -275,7 +278,7 @@ void Activity::CheckAnswer() {
                 DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
                 DrawText("Incorrect!", 430, 570, 46, RED);
                 DrawText("Try Again", 430, 635, 35, RED);
-                
+
             }
         } 
 
@@ -303,6 +306,7 @@ void Activity::CheckAnswer() {
                 DrawRectangleRec(runbutton,RED);
                 DrawRectangle(405,552,1040,512,(Color){1,63,15,255});
                 DrawText("Correct!", 430, 570, 46, WHITE);
+
                 DrawRectangleRounded(nextbutton, 0.1, 10, GREEN);
                 DrawText("NEXT", 430, 635, 35, WHITE);
 
@@ -311,7 +315,7 @@ void Activity::CheckAnswer() {
                 DrawRectangle(405,552,1040,512,(Color){128,5,5,255});
                 DrawText("Incorrect!", 430, 570, 46, RED);
                 DrawText("Try Again", 430, 635, 35, RED);
-                
+  
             }
         } 
     break; 

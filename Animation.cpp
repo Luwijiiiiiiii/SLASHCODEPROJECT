@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-AnimatedSprite::AnimatedSprite(const char* filename, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
+void AnimatedSprite::animatedSprite(const char* filename, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
 {
     spriteSheet = LoadTexture(filename);
     sourceRect = { 0.0f, 0.0f, (float)spriteWidth, (float)spriteHeight };
@@ -9,7 +9,16 @@ AnimatedSprite::AnimatedSprite(const char* filename, int spriteWidth, int sprite
     frameCount = frames;
     currentFrame = 0;
 }
-AnimatedSprite::AnimatedSprite(const char* filename,const char* FileName, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
+void AnimatedSprite::animatedSprite(const char* filename,int spriteX, int spriteY, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
+{
+    spriteSheet = LoadTexture(filename);
+    sourceRect = { 0.0f, 0.0f, (float)spriteWidth , (float)spriteHeight };
+    position = {  (float)spriteX, (float)spriteY};
+    frameTime = animationSpeed;
+    frameCount = frames;
+    currentFrame = 0;
+}
+void AnimatedSprite::animatedSprite(const char* filename,const char* FileName, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
 {
     spriteSheet = LoadTexture(filename);
     spriteSheet2 = LoadTexture(FileName);
@@ -19,26 +28,32 @@ AnimatedSprite::AnimatedSprite(const char* filename,const char* FileName, int sp
     frameCount = frames;
     currentFrame = 0;
 }
-AnimatedSprite::AnimatedSprite(const char* filename,const char* FileName,const char* FileNAME, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
+
+void AnimatedSprite::UpdateHp(float deltaTime, int hp) 
 {
-    spriteSheet = LoadTexture(filename);
-    spriteSheet2 = LoadTexture(FileName);
-    spriteSheet3 = LoadTexture(FileNAME);
-    sourceRect = { 0.0f, 0.0f, (float)spriteWidth, (float)spriteHeight };
-    position = { 0.0f, 0.0f };
-    frameTime = animationSpeed;
-    frameCount = frames;
-    currentFrame = 0;
-    currentFrame3rd = 0;
+    frameTime -= deltaTime;
+    if(frameTime <= 0.0f)
+    {
+        frameTime = 0.1f;
+        while(hp >= 0)
+        {
+            currentFrame++;
+
+            if(currentFrame >= frameCount)
+            currentFrame = 0;
+
+            sourceRect.x = (float)(currentFrame * sourceRect.width);
+            hp = hp - 10;
+        }
+        
+    }
 }
-
-
 void AnimatedSprite::Update(float deltaTime)
 {
     frameTime -= deltaTime;
     if(frameTime <= 0.0f)
     {
-        frameTime = 0.2f;
+        frameTime = 0.1f;
         currentFrame++;
 
         if(currentFrame >= frameCount)

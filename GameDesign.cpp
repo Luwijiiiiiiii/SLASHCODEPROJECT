@@ -240,13 +240,12 @@ void SettingsButton::DrawSlashcodeAct6() {
 
  // base design nang Slashcode
     void SettingsButton :: DrawSlashcodeBase(){
-        DrawRectangle(0, 0, 1440, 1024,WHITE);
-        DrawRectangle(400, 512, 1440, 1024,(Color){59,59,59,255});
-        DrawRectangle(0, 512, 400, 1024,(Color){24,24,24,255});
+        DrawRectangle(400, 512, 1440, 1024,(Color){59,59,59,100});
+        DrawRectangle(0, 512, 400, 1024,(Color){24,24,24,100});
         DrawRectangle(0, 512, 1440, 40 ,BLACK);
         DrawRectangle(400, 512, 5,512,BLACK );
-        DrawRectangle(0,512,190,38,(Color){24,24,24,255});
-        DrawRectangle(405,512,190,38,(Color){59,59,59,255});
+        DrawRectangle(0,512,190,38,(Color){24,24,24,100});
+        DrawRectangle(405,512,190,38,(Color){59,59,59,100});
         DrawText("ACTIVITY",10 , 518, 30, WHITE);
         DrawText("Main.py",430 , 518, 30, WHITE);
        

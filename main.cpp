@@ -3,6 +3,7 @@
 #include "UserInput.h"
 #include "GameDesign.h"
 #include "Activities.h"
+#include "Entity.h"
 #include <iostream>
 
 
@@ -19,16 +20,18 @@ int main()
 
     SettingsButton settingsButton;
     Activity activity;
-
+    Texture2D grass;
     InitWindow(screenWidth, screenHeight, "Project: Slash Code (ALPHA)");
     SetTargetFPS(60);
     GAMESCREEN currentScreen = Logo;
     int framesCounter = 0;
     // Create an instance of AnimatedSprite
-    AnimatedSprite mySprite("resources/bg/intro.png","resources/bg/third.png", 1440, 1024, 11, 0.3f);
-
-    SetTargetFPS(60);
-    
+    AnimatedSprite mySprite;
+    AnimatedSprite introSprite;
+    Player player("resources/bg/Idle.png", 1);
+    mySprite.animatedSprite("resources/bg/second.png","resources/bg/third.png", 1440, 1024, 11, 0.3f);
+    introSprite.animatedSprite("resources/bg/intro.png", 1440, 1024, 11, 0.3f);
+    grass = LoadTexture("resources/bg/grass.png");
 
     // Main game loop
     while (!WindowShouldClose())
@@ -42,9 +45,10 @@ int main()
                 // TODO: Update LOGO screen variables here!
 
                 framesCounter++;    // Count frames
-
+                float deltaTime = GetFrameTime();
+                introSprite.Update(deltaTime);
                 // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 120)
+                if (framesCounter > 60)
                 {
                     currentScreen = Title;
                 }
@@ -109,7 +113,9 @@ int main()
                     currentScreen = Ending;
                 } 
                 activity.CheckAnswer();
-
+                
+                player.updateHp();
+                player.updatePlayer();
 
             }break;           
   //----------------Slashcode function end------------------------------------------------------------------
@@ -143,7 +149,7 @@ int main()
                     // TODO: Draw LOGO screen here!
                     DrawText("LOGO SCREEN", 20, 20, 40, DARKBLUE);
                     DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
-
+                    introSprite.Draw();
                 } break;
                 case Title:
                 {
@@ -179,8 +185,14 @@ int main()
 
                 case slashcode:{
 
+                    
+                    DrawTexture(grass, 0, 0 , WHITE);
+                    
                     settingsButton.DrawSlashcodeBase();
                     activity.DrawInputBox();
+                    player.drawPlayerHpBar();
+                    player.drawPlayer();
+                    
 
    
                         
