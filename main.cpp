@@ -186,7 +186,8 @@ int main()
                 case slashcode:{
 
                     
-                    DrawTexture(grass, 0, 0 , WHITE);
+                    DrawTexture(grass, 0, -395 , WHITE);
+                    DrawTexture(grass, 0, 515 , WHITE);
                     
                     settingsButton.DrawSlashcodeBase();
                     activity.DrawInputBox();

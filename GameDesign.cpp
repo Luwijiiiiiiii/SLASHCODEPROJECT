@@ -118,7 +118,7 @@ void SettingsButton::Drawlanguage() {
     DrawRectangleRounded(roundedRect, 0.1, 10,(Color){10,18,42,255}  );
     DrawText("SLASHCODE", 509, 40, 70, (Color){218,221,216,255});
     DrawRectangle(300,120, 850 , 3 , (Color){218,221,216,255});
-    DrawText("SELECT LEVEL", 559, 157, 40, (Color){218,221,216,255});
+    DrawText("SELECT LANGUAGE", 520, 157, 40, (Color){218,221,216,255});
     DrawRectangleRounded(buttonRect1, 0.4 , 10, BLACK);
     DrawText("PYTHON", 578 , 368, 76 , (Color){218,221,216,255});
         if(hover){

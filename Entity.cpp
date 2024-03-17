@@ -12,7 +12,7 @@ Player::Player(const char* sprite, int playerState)
     spriteHeight = 64;
     frames = 4;
     playerX = 300;
-    playerY = 400;
+    playerY = 340;
     health = 60;
     //animatedSprite(const char* filename,int spriteX, int spriteY, int spriteWidth, int spriteHeight, int frames, float animationSpeed)
     playerAnimation.animatedSprite(sprite, playerX, playerY, spriteWidth, spriteHeight, frames, 0.3f);
