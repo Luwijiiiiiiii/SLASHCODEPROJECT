@@ -29,6 +29,7 @@ int main()
     AnimatedSprite mySprite;
     AnimatedSprite introSprite;
     Player player("resources/bg/Idle.png", 1);
+    Enemy enemy("resources/bg/Slime.png", 0);
     mySprite.animatedSprite("resources/bg/second.png","resources/bg/third.png", 1440, 1024, 11, 0.3f);
     introSprite.animatedSprite("resources/bg/intro.png", 1440, 1024, 11, 0.3f);
     grass = LoadTexture("resources/bg/grass.png");
@@ -116,6 +117,7 @@ int main()
                 
                 player.updateHp();
                 player.updatePlayer();
+                enemy.updateEnemy();
 
             }break;           
   //----------------Slashcode function end------------------------------------------------------------------
@@ -193,7 +195,7 @@ int main()
                     activity.DrawInputBox();
                     player.drawPlayerHpBar();
                     player.drawPlayer();
-                    
+                    enemy.drawEnemy();
 
    
                         

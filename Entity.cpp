@@ -48,9 +48,10 @@ void Player::drawPlayerHpBar()
 Enemy::Enemy(const char* sprite, int playerState) 
 {
     fileName = LoadTexture(sprite);
-    spriteWidth = 32;
-    spriteHeight = 32;
-    frames = 4;
+    spriteWidth = 128;
+    spriteHeight = 128;
+    frames = 2;
+    enemyAnimation.animatedSprite(sprite,900, 270, spriteWidth, spriteHeight, frames, 0.5f);
 }
 void Enemy::updateEnemy()
 {
